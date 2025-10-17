@@ -61,10 +61,15 @@ systemctl stop hysteria-server.service
 ```
 
 ### alpine系统
-安装
+上传文件后安装  将文件上传至 ```/usr/local/bin``` 目录下
+```
+bash <(curl -Ls https://raw.githubusercontent.com/Sakura679/hysteria2-scripts/refs/heads/main/hysteria2_by_file_for_alpine.sh) install
+```
+或
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/Sakura679/hysteria2-scripts/refs/heads/main/hysteria2_for_alpine.sh) install
 ```
+
 卸载
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/Sakura679/hysteria2-scripts/refs/heads/main/hysteria2_for_alpine.sh) uninstall
