@@ -75,6 +75,17 @@ bash <(curl -Ls https://raw.githubusercontent.com/Sakura679/hysteria2-scripts/re
 bash <(curl -Ls https://raw.githubusercontent.com/Sakura679/hysteria2-scripts/refs/heads/main/hysteria2_for_alpine.sh) uninstall
 ```
 
+
+查看状态
+```
+service hysteria status
+```
+
+重启
+```
+service hysteria restart
+```
+
 ### 如果更新系统卡住，请更换镜像源
 ```
 cat > /etc/apk/repositories <<'EOF'
