@@ -89,7 +89,8 @@ install_hysteria() {
     -keyout "$CONFIG_DIR/server.key" -out "$CONFIG_DIR/server.crt" \
     -subj "/CN=$FAKE_DOMAIN" -days 825
 
-  GENPASS="$(generate_random_password)"
+  # GENPASS="$(generate_random_password)"
+  GENPASS="ygJzGxFTUCdBENzoTpF5rUSG"
   echo "正在写入配置文件..."
   write_config "$GENPASS"
 
