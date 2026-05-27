@@ -80,8 +80,45 @@ install_hysteria() {
   apk add --no-cache wget curl git openssh openssl openrc
 
   echo "正在下载 Hysteria2..."
-  wget -O "$BIN_PATH" https://download.hysteria.network/app/latest/hysteria-linux-amd64 --no-check-certificate
+  echo "检测系统架构..."
+
+  ARCH=$(uname -m)
+
+  case ${ARCH} in
+      x86_64)
+          HY_ARCH="amd64"
+          ;;
+      aarch64)
+          HY_ARCH="arm64"
+          ;;
+      armv7l)
+          HY_ARCH="arm"
+          ;;
+      i386|i686)
+          HY_ARCH="386"
+          ;;
+      *)
+          echo "不支持的架构: ${ARCH}"
+          exit 1
+          ;;
+  esac
+
+  DOWNLOAD_URL="https://download.hysteria.network/app/latest/hysteria-linux-${HY_ARCH}"
+
+  echo "开始下载 Hysteria2..."
+  echo "架构: ${ARCH}"
+  echo "下载地址: ${DOWNLOAD_URL}"
+
+  wget -O "$BIN_PATH" "$DOWNLOAD_URL" --no-check-certificate
+
+  if [ $? -ne 0 ]; then
+      echo "Hysteria2 下载失败"
+      exit 1
+  fi
+
   chmod +x "$BIN_PATH"
+
+  echo "下载完成"
 
   echo "正在生成自签名证书 (有效期 825 天)..."
   mkdir -p "$CONFIG_DIR"
